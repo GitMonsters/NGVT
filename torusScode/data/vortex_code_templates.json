@@ -1,0 +1,23 @@
+{
+  "write a function": "def function_name(parameters):\n    \"\"\"Docstring\"\"\"\n    # Implementation\n    return result",
+  "create a function": "def function_name(*args, **kwargs):\n    \"\"\"Function description\"\"\"\n    pass",
+  "create a class": "class ClassName:\n    \"\"\"Class description\"\"\"\n    \n    def __init__(self):\n        pass",
+  "define a class": "class ClassName:\n    def __init__(self, param):\n        self.param = param\n    \n    def method(self):\n        pass",
+  "factorial": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)",
+  "fibonacci": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)",
+  "binary search": "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1",
+  "quick sort": "def quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quicksort(left) + middle + quicksort(right)",
+  "reverse a list": "def reverse_list(lst):\n    return lst[::-1]",
+  "sort a list": "def sort_list(lst):\n    return sorted(lst)",
+  "filter a list": "def filter_list(lst, condition):\n    return [x for x in lst if condition(x)]",
+  "reverse a string": "def reverse_string(s):\n    return s[::-1]",
+  "check palindrome": "def is_palindrome(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]",
+  "calculate sum": "def calculate_sum(numbers):\n    return sum(numbers)",
+  "find maximum": "def find_max(numbers):\n    return max(numbers)",
+  "find minimum": "def find_min(numbers):\n    return min(numbers)",
+  "calculate average": "def calculate_average(numbers):\n    return sum(numbers) / len(numbers) if numbers else 0",
+  "read file": "def read_file(filename):\n    with open(filename, 'r') as f:\n        return f.read()",
+  "write file": "def write_file(filename, content):\n    with open(filename, 'w') as f:\n        f.write(content)",
+  "implement stack": "class Stack:\n    def __init__(self):\n        self.items = []\n    \n    def push(self, item):\n        self.items.append(item)\n    \n    def pop(self):\n        return self.items.pop() if self.items else None\n    \n    def peek(self):\n        return self.items[-1] if self.items else None\n    \n    def is_empty(self):\n        return len(self.items) == 0",
+  "implement queue": "from collections import deque\n\nclass Queue:\n    def __init__(self):\n        self.items = deque()\n    \n    def enqueue(self, item):\n        self.items.append(item)\n    \n    def dequeue(self):\n        return self.items.popleft() if self.items else None\n    \n    def is_empty(self):\n        return len(self.items) == 0"
+}
