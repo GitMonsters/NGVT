@@ -155,18 +155,21 @@ class TestCompetitivePerformanceAnalyzer(unittest.TestCase):
     
     def test_competitive_tier(self):
         """Test competitive tier classification"""
-        tiers = [
-            (0.90, "WORLD-CLASS"),
-            (0.65, "EXCELLENT"),
-            (0.45, "STRONG"),
-            (0.30, "COMPETITIVE"),
-            (0.20, "DEVELOPING"),
-            (0.05, "BASELINE")
+        # Test cases with (accuracy, percentile, expected_tier)
+        test_cases = [
+            (0.90, 50.0, "WORLD-CLASS"),  # High accuracy
+            (0.65, 50.0, "EXCELLENT"),     # Good accuracy
+            (0.45, 50.0, "STRONG"),        # Above average accuracy
+            (0.30, 50.0, "COMPETITIVE"),   # Average (percentile >= 50)
+            (0.20, 50.0, "COMPETITIVE"),   # Low accuracy but percentile >= 50
+            (0.20, 20.0, "DEVELOPING"),    # Low accuracy and low percentile
+            (0.05, 10.0, "BASELINE")       # Very low
         ]
         
-        for accuracy, expected_tier in tiers:
-            tier = self.analyzer._get_competitive_tier(accuracy, 50.0)
-            self.assertEqual(tier, expected_tier)
+        for accuracy, percentile, expected_tier in test_cases:
+            tier = self.analyzer._get_competitive_tier(accuracy, percentile)
+            self.assertEqual(tier, expected_tier,
+                           f"Failed for accuracy={accuracy}, percentile={percentile}")
     
     def test_improvement_targets(self):
         """Test improvement target identification"""

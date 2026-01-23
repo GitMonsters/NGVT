@@ -192,27 +192,25 @@ class RealWorldARCValidator:
             
         Returns:
             True if problem solved correctly, False otherwise
+            
+        Raises:
+            Exception: Re-raises any exception from the model
         """
-        try:
-            # Check if model has required methods
-            if hasattr(model, 'solve_arc_problem'):
-                prediction = model.solve_arc_problem(problem)
-            elif hasattr(model, 'predict'):
-                prediction = model.predict(problem)
-            else:
-                # Fallback: simple pattern matching
-                return self._simple_validation(problem)
-            
-            # Check if prediction matches expected output
-            if 'test' in problem and len(problem['test']) > 0:
-                expected = problem['test'][0].get('output')
-                return self._compare_outputs(prediction, expected)
-            
-            return False
-            
-        except Exception as e:
-            logger.debug(f"Problem validation error: {e}")
-            return False
+        # Check if model has required methods
+        if hasattr(model, 'solve_arc_problem'):
+            prediction = model.solve_arc_problem(problem)
+        elif hasattr(model, 'predict'):
+            prediction = model.predict(problem)
+        else:
+            # Fallback: simple pattern matching
+            return self._simple_validation(problem)
+        
+        # Check if prediction matches expected output
+        if 'test' in problem and len(problem['test']) > 0:
+            expected = problem['test'][0].get('output')
+            return self._compare_outputs(prediction, expected)
+        
+        return False
     
     def _simple_validation(self, problem: Dict[str, Any]) -> bool:
         """
