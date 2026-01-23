@@ -275,11 +275,16 @@ class DeploymentStressTester:
         """
         Monitor system resources during test
         
+        Note: This is a placeholder for resource monitoring.
+        In production, this would actively monitor and update peak values.
+        Current implementation relies on inline monitoring in the main test loop.
+        
         Args:
             monitoring: Dictionary with 'running' flag
-            peak_memory_ref: Reference to peak memory variable
-            peak_cpu_ref: Reference to peak CPU variable
+            peak_memory_ref: Reference to peak memory variable (unused in current implementation)
+            peak_cpu_ref: Reference to peak CPU variable (unused in current implementation)
         """
+        # Placeholder - actual monitoring happens in the main stress test loop
         while monitoring['running']:
             try:
                 time.sleep(1.0)

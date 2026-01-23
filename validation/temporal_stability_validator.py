@@ -157,7 +157,7 @@ class TemporalStabilityValidator:
             variance=variance,
             test_runs=len(valid_results),
             timestamps=timestamps,
-            accuracy_history=[stability_score] * len(valid_results),  # Placeholder
+            accuracy_history=[],  # Can be populated by caller with actual accuracy measurements
             stability_tier=tier
         )
         
