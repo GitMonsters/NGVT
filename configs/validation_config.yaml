@@ -1,0 +1,160 @@
+# NGVT Validation Configuration
+# Configuration settings for validation infrastructure
+
+# Validation settings
+validation:
+  # Enable/disable validation components
+  enable_real_world_testing: true
+  enable_stress_testing: true
+  enable_error_analysis: true
+  enable_temporal_stability: true
+  enable_competitive_analysis: true
+  
+  # ARC validation settings
+  arc:
+    max_problems: 100
+    timeout_seconds: 30
+    data_directory: "torusScode/data"
+    default_split: "training"
+  
+  # Temporal stability settings
+  stability:
+    num_runs: 5
+    time_interval_seconds: 1.0
+    max_variance: 0.05
+    min_runs: 3
+
+# Performance thresholds
+performance_thresholds:
+  # Minimum acceptable accuracy (0-1 scale)
+  min_accuracy: 0.15
+  
+  # Maximum acceptable latency in milliseconds
+  max_latency_ms: 5000
+  
+  # Maximum acceptable memory usage in MB
+  max_memory_mb: 8192
+  
+  # Maximum acceptable CPU usage percentage
+  max_cpu_percent: 90
+  
+  # Minimum stability score (0-1 scale)
+  min_stability_score: 0.85
+
+# Stress test configuration
+stress_test:
+  # Test duration
+  duration_seconds: 300
+  
+  # Concurrent request handling
+  concurrent_requests: 50
+  
+  # Target request rate per second
+  request_rate_per_second: 10
+  
+  # Spike test settings
+  spike:
+    duration_seconds: 10
+    spike_concurrent: 100
+    spike_rate: 50
+
+# Error analysis settings
+error_analysis:
+  # Enable error categorization
+  enable_categorization: true
+  
+  # Enable pattern detection
+  enable_pattern_detection: true
+  
+  # Enable severity analysis
+  enable_severity_analysis: true
+  
+  # Minimum errors for pattern detection
+  min_errors_for_pattern: 3
+
+# Competitive analysis settings
+competitive:
+  # Custom benchmarks (optional)
+  custom_benchmarks: {}
+  
+  # Comparison categories
+  compare_to_categories:
+    - "Deep Learning"
+    - "Symbolic AI"
+    - "Hybrid Systems"
+
+# Reporting settings
+reporting:
+  # Report format
+  format: "text"  # Options: text, json, html
+  
+  # Verbosity level
+  verbosity: "normal"  # Options: minimal, normal, detailed, debug
+  
+  # Save reports to file
+  save_to_file: true
+  
+  # Report output directory
+  output_directory: "validation_reports"
+  
+  # Include timestamps
+  include_timestamps: true
+
+# Logging settings
+logging:
+  # Log level
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  
+  # Log to file
+  log_to_file: false
+  
+  # Log file path
+  log_file_path: "logs/validation.log"
+
+# Resource limits
+resource_limits:
+  # Maximum test duration
+  max_test_duration_seconds: 3600
+  
+  # Maximum parallel processes
+  max_parallel_processes: 10
+  
+  # Memory limit for stress tests
+  stress_test_memory_limit_mb: 16384
+
+# Quality gates
+quality_gates:
+  # Production deployment gates
+  production:
+    min_accuracy: 0.40
+    min_stability: 0.90
+    max_error_rate: 0.01
+    min_deployment_readiness: "PRODUCTION-READY"
+  
+  # Beta deployment gates
+  beta:
+    min_accuracy: 0.25
+    min_stability: 0.75
+    max_error_rate: 0.05
+    min_deployment_readiness: "BETA-READY"
+  
+  # Alpha deployment gates
+  alpha:
+    min_accuracy: 0.15
+    min_stability: 0.60
+    max_error_rate: 0.10
+    min_deployment_readiness: "ALPHA-READY"
+
+# Advanced settings
+advanced:
+  # Enable experimental features
+  enable_experimental: false
+  
+  # Cache validation results
+  cache_results: true
+  
+  # Cache directory
+  cache_directory: ".validation_cache"
+  
+  # Result retention days
+  result_retention_days: 30
